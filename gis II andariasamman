@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <title>Program GoogleMaps</title>
+  <head>
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+  .city {
+  background-color: lightgray;
+  color: white;
+  margin: 25px;
+  padding: 25px;
+}
+    </style>
+  </head>
+
+  <body>
+<div class="city">
+    <h3>UAS GIS II</h3>
+    <h3>Andarias amman_20200302010</h3>
+  </div>
+
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var tanggulselatan = {
+          lat: -0.925895,  
+          lng:119.903782,
+        };
+        var waypoint1 = { lat: -0.922194, lng: 119.899567 };
+        var waypoint2 = { lat: -0.922194, lng: 119.899567 };
+        var waypoint3 = { lat: -0.922194, lng: 119.899567 };
+        var waypoint4 = { lat: -0.921056, lng: 119.899064 };
+        var waypoint5 = { lat: -0.920375, lng: 119.898407 }; 
+        var waypoint6 = { lat: -0.919604, lng: 119.898248 };
+        var waypoint7 = { lat: -0.919261, lng: 119.898219 };
+        var waypoint8 = { lat: -0.919238, lng: 119.898146 };
+        var waypoint9 = { lat:-0.919178, lng: 119.895419 };
+        var waypoint10 = { lat: -0.919389, lng: 119.895403 };
+        var PuskesmasBirobuli = { lat: -0.9193850927130972, lng: 119.89531287357637 }; 
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: tanggulselatan,
+        });
+        var marker1 = new google.maps.Marker({
+          position: tanggulselatan,
+          map: map
+        });
+        var marker2 = new google.maps.Marker({ position: PuskesmasBirobuli, map: map });
+
+        var polyline = new google.maps.Polyline({
+          path: [
+            tanggulselatan,
+            waypoint1,
+            waypoint2,
+            waypoint3,
+            waypoint4,
+            waypoint5,
+            waypoint6,
+            waypoint7,
+            waypoint8,
+            waypoint9,
+            waypoint10,
+            PuskesmasBirobuli,
+          ],
+          strokeColor: "Red",
+          strokeOpacity: 5,
+          strokeWeight: 3.5,
+        });
+
+        polyline.setMap(map);
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh8nyTRtu21vDzdR0tfkST6kfDdWApSkU&callback=initMap"
+    ></script>
+  </body>
+</html>
